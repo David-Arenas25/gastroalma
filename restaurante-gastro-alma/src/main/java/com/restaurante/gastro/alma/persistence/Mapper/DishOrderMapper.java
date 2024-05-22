@@ -20,7 +20,7 @@ public interface DishOrderMapper {
 
         })
         DishOrder toDishOrder(PedidoPlato pedidoPlato);
-        List<DishOrder> toDishesOrders(Iterable<Pedido> pedidoPlatos);
+        List<DishOrder> toDishesOrders(Iterable<PedidoPlato> pedidoPlatos);
         @InheritInverseConfiguration
         @Mappings({
                 @Mapping(target = "plato",ignore = true),

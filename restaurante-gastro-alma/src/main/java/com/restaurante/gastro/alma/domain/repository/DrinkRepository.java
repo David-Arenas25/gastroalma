@@ -12,6 +12,5 @@ public interface DrinkRepository {
     void deleteDrink(int drinkId);
     Optional<Drink> getByID(int drinkId);
     void changeDrinkPrice(int drinkId ,double drinkPrice);
-    //faltan metodos?
 
 }

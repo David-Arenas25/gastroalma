@@ -32,8 +32,8 @@ public class PedidoBebidaRepository implements DrinkOrderRepository {
 
 
     @Override
-    public DrinkOrder orderADrink(int idBebida, int idPlato) {
-        return mapper.toDrinkOrder(pedidoBebidaCrudRepository.pedirBebida(idBebida,idPlato));
+    public void orderADrink(int idBebida, int idPlato, String comentario, int cantidad) {
+        pedidoBebidaCrudRepository.pedirBebida(idBebida,idPlato,comentario,cantidad);
     }
 
 

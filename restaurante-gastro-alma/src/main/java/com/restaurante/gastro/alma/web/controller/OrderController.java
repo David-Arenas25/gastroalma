@@ -61,7 +61,7 @@ public class OrderController {
         }
     }
 
-    @PostMapping("/calc")
+    @PostMapping("/calculate")
     public ResponseEntity<Float> calcularPrecioPedido(@RequestParam("pID_PEDIDO") int pID_PEDIDO) {
         try {
             if (orderService.getByID(pID_PEDIDO).isPresent()){

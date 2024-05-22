@@ -31,9 +31,10 @@ public class DrinkOrderService {
         }
     }
 
-    public DrinkOrder orderADrink(int idBebida, int idPlato) {
+    public void orderADrink(int drinkId, int orderId, String comentary, int quantity) {
         try {
-            return drinkOrderRepository.orderADrink(idBebida, idPlato);
+            drinkOrderRepository.orderADrink(drinkId,orderId,comentary, quantity);
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error al ordenar una bebida.", e);

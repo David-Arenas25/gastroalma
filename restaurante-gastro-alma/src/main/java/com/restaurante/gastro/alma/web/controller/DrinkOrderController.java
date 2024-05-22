@@ -37,12 +37,14 @@ public class DrinkOrderController {
     }
 
     @PostMapping("/orderadrink")
-    public ResponseEntity<DrinkOrder> orderADrink(@RequestParam int idBebida ,@RequestParam int idPedido){
+    public ResponseEntity<DrinkOrder> orderADrink(@RequestParam int drinkId ,@RequestParam int orderId, @RequestParam String comentary, @RequestParam int quantity){
         try {
-            DrinkOrder drinkOrder = drinkOrderService.orderADrink(idBebida, idPedido);
-            return new ResponseEntity<>(drinkOrder,HttpStatus.CREATED);
+            drinkOrderService.orderADrink(drinkId, orderId, comentary, quantity);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 }

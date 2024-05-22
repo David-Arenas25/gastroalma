@@ -7,6 +7,7 @@ import java.util.List;
 public interface DishOrderRepository {
 
     List<DishOrder> getAll();
-    DishOrder save();
-    void delete();
+
+    DishOrder save(DishOrder dishOrder);
+
 }
