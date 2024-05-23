@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.1'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'org.springframework.boot' version '2.6.4' // Cambiar a la versión correcta de Spring Boot
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.restaurante'
@@ -23,11 +23,10 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-	implementation 'org.springframework.data:spring-data-jpa:3.2.4'
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
-	implementation 'io.springfox:springfox-swagger2:2.9.2'
-	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-
+	implementation "io.springfox:springfox-boot-starter:3.0.0"
 }
 
 tasks.named('test') {

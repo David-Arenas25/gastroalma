@@ -5,12 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-
-
 public interface PedidoBebidaCrudRepository extends CrudRepository<PedidoBebida,Integer> {
 
-    @Procedure("pedir_bebida")
-    void pedirBebida(@Param("id_Bebida") int idBebida, @Param("id_Pedido") int idPedido, @Param("comentario") String comentario, @Param("cantidad") int cantidad);
+    @Procedure(name = "pedir_bebida")
+    PedidoBebida pedirBebida(@Param("idBebida") int idBebida, @Param("idPedido") int idPedido);
 
 
 

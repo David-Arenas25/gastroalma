@@ -1,8 +1,7 @@
 package com.restaurante.gastro.alma.persistence.entity;
-
 import javax.persistence.*;
-
 import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "pedidos")
 public class Pedido {

@@ -1,6 +1,7 @@
 package com.restaurante.gastro.alma.persistence.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "pedido_bebida")

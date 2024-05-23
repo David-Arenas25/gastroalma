@@ -11,18 +11,17 @@ import org.springframework.data.repository.CrudRepository;
 
 
 
-
 import java.util.List;
 
 public interface PedidoCrudRepository extends CrudRepository<Pedido,Integer> {
 
     List<Pedido> findByIdMesero(int IdMesero);
 
-    @Procedure("calcular_precio_pedido")
+    @Query(value = "CALL CALCULAR_PRECIO_PEDIDO(:pID_PEDIDO)", nativeQuery = true)
     void calcularPrecioPedido(@Param("pID_PEDIDO") int idPedido);
 
 
-    @Procedure("aplicar_descuento")
+    @Query(value = "CALL aplicar_descuento(:p_id_pedido, :descuento)", nativeQuery = true)
     void aplicarDescuento(@Param("p_id_pedido") int idPedido, @Param("descuento") float descuento);
 }
 
