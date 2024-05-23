@@ -1,10 +1,9 @@
 package com.restaurante.gastro.alma.persistence.entity;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Embeddable
-public class PedidoPlatoPk {
+public class PedidoPlatoPk implements Serializable {
     @Column(name="id_plato")
     private Integer idPlato;
 

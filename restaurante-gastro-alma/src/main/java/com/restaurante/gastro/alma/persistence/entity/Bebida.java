@@ -1,7 +1,5 @@
 package com.restaurante.gastro.alma.persistence.entity;
-
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
