@@ -11,7 +11,7 @@ public interface PedidoPlatoCrudRepository extends CrudRepository<PedidoPlato,In
 
 @Procedure("pedir_plato")
 void pedirPlato(@Param("id_plato") int idPlato, @Param("id_pedido")int idPedido, @Param("comentario") String comentario, @Param("cantidad") int cantidad);
-Optional<PedidoPlato> findById(int idPedido);
+Optional<PedidoPlato> findByIdIdPedido(int idPedido);
 
 
 

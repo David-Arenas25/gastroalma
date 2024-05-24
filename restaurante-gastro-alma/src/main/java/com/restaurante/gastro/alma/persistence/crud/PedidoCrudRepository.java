@@ -22,5 +22,8 @@ public interface PedidoCrudRepository extends CrudRepository<Pedido,Integer> {
 
     @Procedure("aplicar_descuento")
     void aplicarDescuento(@Param("p_id_pedido") int idPedido, @Param("descuento") float descuento);
+
+
+
 }
 

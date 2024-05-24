@@ -14,5 +14,4 @@ public interface OrderRepository {
     Optional<Order> getByID(int orderId);
     void calculateOrderPrice(int pID_PEDIDO);
     void applyDiscount(int orderId, float discount);
-
 }

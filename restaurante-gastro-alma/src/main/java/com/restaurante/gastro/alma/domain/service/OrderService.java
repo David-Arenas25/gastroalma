@@ -56,12 +56,19 @@ public class OrderService {
     }
 
     public void applyDiscount(int orderId, float discount) throws Exception {
+        try {
             Optional<Order> order = orderRepository.getByID(orderId);
             if (order.isPresent()) {
                 if (discount <= 100 && discount > 0) {
-                    orderRepository.applyDiscount(orderId, discount);}
+                    orderRepository.applyDiscount(orderId, discount);
+                }
             }
+        } catch (Exception e) {
+            throw new Exception("Error al aplicar el descuento al pedido: " + e.getMessage());
+        }
     }
+
+
 }
 
 

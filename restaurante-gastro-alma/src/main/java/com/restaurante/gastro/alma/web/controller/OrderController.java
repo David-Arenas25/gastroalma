@@ -2,6 +2,9 @@ package com.restaurante.gastro.alma.web.controller;
 
 import com.restaurante.gastro.alma.domain.Order;
 import com.restaurante.gastro.alma.domain.service.OrderService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +20,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
+    @ApiOperation("ver todos los pedidos")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "pedidos encontrados"),
+            @ApiResponse(code = 500, message = "error al encontrar los pedidos")
+    })
     @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         try {
@@ -27,7 +34,11 @@ public class OrderController {
             return new ResponseEntity<>("Error al obtener todas las órdenes: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("crear un pedido")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "pedido creado"),
+            @ApiResponse(code = 500, message = "error al crear el pedido")
+    })
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Order order) {
         try {
@@ -37,7 +48,11 @@ public class OrderController {
             return new ResponseEntity<>("Error al guardar la orden: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("borrar pedido")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "pedido borrado"),
+            @ApiResponse(code = 500, message = "el pedido no se borró")
+    })
     @DeleteMapping("delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int orderId) {
         try {
@@ -52,6 +67,11 @@ public class OrderController {
         }
     }
 
+    @ApiOperation("encontrar pedido por id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "pedido encontrado"),
+            @ApiResponse(code = 500, message = "el pedido no fue encontrado")
+    })
     @GetMapping("id/{id}")
     public ResponseEntity<?> getByID(@PathVariable("id") int orderId) {
         try {
@@ -60,7 +80,11 @@ public class OrderController {
             return new ResponseEntity<>("Error al obtener la orden por ID: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("calcular precio de pedido por id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "el precio fue calculado correctamente"),
+            @ApiResponse(code = 500, message = "error al calcular el precio")
+    })
     @PostMapping("/calculate")
     public ResponseEntity<Float> calcularPrecioPedido(@RequestParam("pID_PEDIDO") int pID_PEDIDO) {
         try {
@@ -75,7 +99,11 @@ public class OrderController {
         }
     }
 
-
+    @ApiOperation("aplicar descuento al precio del pedido")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "descuento aplicado"),
+            @ApiResponse(code = 500, message = "error al aplicar el descuento")
+    })
     @PostMapping("/apply")
     public ResponseEntity<?> applyDiscount(@RequestParam("orderId") int orderId, @RequestParam("discount") float discount) {
         try {

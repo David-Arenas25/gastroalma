@@ -2,6 +2,9 @@ package com.restaurante.gastro.alma.web.controller;
 
 import com.restaurante.gastro.alma.domain.Dish;
 import com.restaurante.gastro.alma.domain.service.DishService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,11 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
+    @ApiOperation("ver todos los platos disponibles")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "platos encontrados"),
+            @ApiResponse(code = 500, message = "problema al intentar guardar los platos")
+    })
     @GetMapping("/all")
     public ResponseEntity<List<Dish>> getAll(){
         try {
@@ -26,7 +34,11 @@ public class DishController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("Guardar un plato")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "plato guardado"),
+            @ApiResponse(code = 500, message = "el plato no se pudo guardar")
+    })
     @PostMapping("/save")
     public ResponseEntity<Dish> save(@RequestBody Dish dish){
         try {
@@ -36,7 +48,11 @@ public class DishController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("borrar un plato")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "plato borrado"),
+            @ApiResponse(code = 500, message = "el plato no se borro")
+    })
     @DeleteMapping("delete/{id}")
     public ResponseEntity delete(@PathVariable("id") int dishId){
         try {
@@ -51,7 +67,11 @@ public class DishController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("buscar plato por id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "plato encontrado"),
+            @ApiResponse(code = 500, message = "plato no encontrado")
+    })
     @GetMapping("id/{id}")
     public ResponseEntity<Dish> getByID(@PathVariable("id") int idPlato){
         try {
@@ -65,7 +85,11 @@ public class DishController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @ApiOperation("cambiar precio de plato")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "precio del plato actualizado"),
+            @ApiResponse(code = 500, message = "el precio del plato no se cambio")
+    })
     @PostMapping("/changeprice")
     public ResponseEntity<String> changeDishPrice(@RequestParam int dishId ,@RequestParam double dishPrice) {
         try {

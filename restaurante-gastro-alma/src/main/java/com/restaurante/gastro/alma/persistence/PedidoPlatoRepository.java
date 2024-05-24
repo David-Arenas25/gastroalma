@@ -40,7 +40,7 @@ public class PedidoPlatoRepository implements DishOrderRepository {
 
     @Override
     public Optional<DishOrder> getById(int orderId) {
-        Optional<PedidoPlato> pedidoPlato = pedidoPlatoCrudRepository.findById(orderId);
+        Optional<PedidoPlato> pedidoPlato = pedidoPlatoCrudRepository.findByIdIdPedido(orderId);
         return pedidoPlato.map(pedidoPlato1 -> mapper.toDishOrder(pedidoPlato1));
     }
 }
