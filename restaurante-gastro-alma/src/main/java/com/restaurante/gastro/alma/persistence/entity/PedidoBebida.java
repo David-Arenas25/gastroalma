@@ -13,12 +13,12 @@ public class PedidoBebida {
     private Integer cantidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_bebida",insertable = false,updatable = false)
-    @MapsId("idBebida")
+    @JoinColumn(name = "id_pedido",insertable = false,updatable = false)
+    @MapsId("idPedido")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "id_pedido",insertable = false,updatable = false)
+    @JoinColumn(name = "id_bebida",insertable = false,updatable = false)
     private Bebida bebida;
 
     public Pedido getPedido() {

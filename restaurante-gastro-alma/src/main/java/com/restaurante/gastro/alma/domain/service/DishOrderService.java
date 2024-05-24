@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DishOrderService {
@@ -32,5 +33,25 @@ public class DishOrderService {
             return null;
         }
     }
+
+    public void orderADish(int dishId, int orderId, String commentary, int quantity) {
+        try {
+            dishOrderRepository.orderADish(dishId, orderId, commentary, quantity);
+        } catch (Exception e) {
+
+            System.err.println("Error al procesar la orden del platillo: " + e.getMessage());
+        }
+    }
+
+    public Optional<DishOrder> getByOrderId(int orderId) {
+        try {
+            return dishOrderRepository.getById(orderId);
+        } catch (Exception e) {
+            System.err.println("Error al obtener la orden del platillo por ID: " + e.getMessage());
+            return null;
+        }
+    }
+
+
 
 }

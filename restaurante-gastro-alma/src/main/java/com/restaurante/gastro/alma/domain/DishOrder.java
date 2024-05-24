@@ -6,12 +6,21 @@ public class DishOrder {
     private String comentary;
     private int quantity;
 
-    public int getDishId() {
-        return dishId;
+
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDishId(int dishId) {
-        this.dishId = dishId;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getComentary() {
+        return comentary;
+    }
+
+    public void setComentary(String comentary) {
+        this.comentary = comentary;
     }
 
     public int getOrderId() {
@@ -22,23 +31,11 @@ public class DishOrder {
         this.orderId = orderId;
     }
 
-    public String getComentary() {
-        return comentary;
+    public int getDishId() {
+        return dishId;
     }
 
-    public void setComentario(String comentary) {
-        this.comentary = comentary;
-    }
-
-    public void setComentary(String comentary) {
-        this.comentary = comentary;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setDishId(int dishId) {
+        this.dishId = dishId;
     }
 }

@@ -17,11 +17,10 @@ public interface PedidoCrudRepository extends CrudRepository<Pedido,Integer> {
 
     List<Pedido> findByIdMesero(int IdMesero);
 
-    @Query(value = "CALL CALCULAR_PRECIO_PEDIDO(:pID_PEDIDO)", nativeQuery = true)
+    @Procedure("calcular_precio_pedido")
     void calcularPrecioPedido(@Param("pID_PEDIDO") int idPedido);
 
-
-    @Query(value = "CALL aplicar_descuento(:p_id_pedido, :descuento)", nativeQuery = true)
+    @Procedure("aplicar_descuento")
     void aplicarDescuento(@Param("p_id_pedido") int idPedido, @Param("descuento") float descuento);
 }
 

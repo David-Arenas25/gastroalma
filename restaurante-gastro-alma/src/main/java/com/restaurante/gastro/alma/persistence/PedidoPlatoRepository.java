@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PedidoPlatoRepository implements DishOrderRepository {
@@ -21,7 +22,7 @@ public class PedidoPlatoRepository implements DishOrderRepository {
 
     @Override
     public List<DishOrder> getAll() {
-        return mapper.toDishesOrders(pedidoPlatoCrudRepository.findAll());
+        return mapper.toDishesOrders((List<PedidoPlato>) pedidoPlatoCrudRepository.findAll());
     }
 
     @Override
@@ -30,5 +31,16 @@ public class PedidoPlatoRepository implements DishOrderRepository {
         PedidoPlato pedidoPlato = mapper.toPedidoPlato(dishOrder);
         pedidoPlatoCrudRepository.save(pedidoPlato);
         return mapper.toDishOrder(pedidoPlato);
+    }
+
+    @Override
+    public void orderADish(int dishId, int orderId, String comentary, int quantity) {
+        pedidoPlatoCrudRepository.pedirPlato(dishId,orderId,comentary,quantity);
+    }
+
+    @Override
+    public Optional<DishOrder> getById(int orderId) {
+        Optional<PedidoPlato> pedidoPlato = pedidoPlatoCrudRepository.findById(orderId);
+        return pedidoPlato.map(pedidoPlato1 -> mapper.toDishOrder(pedidoPlato1));
     }
 }

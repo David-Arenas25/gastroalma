@@ -12,8 +12,20 @@ public class PedidoPlato {
 
     @ManyToOne
     @JoinColumn(name = "id_plato",insertable = false,updatable = false)
-    @MapsId("idPlato")
     private Plato plato;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pedido",insertable = false,updatable = false)
+    @MapsId("idPedido")
+    private Pedido pedido;
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
     public PedidoPlatoPk getId() {
 

@@ -9,21 +9,25 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { DishMapper.class,OrderMapper.class,WaiterMapper.class})
 public interface DishOrderMapper {
 
             @Mappings({
                 @Mapping(source = "id.idPedido",target = "orderId"),
                 @Mapping(source = "id.idPlato",target = "dishId"),
                 @Mapping(source = "comentario",target = "comentary"),
-                @Mapping(source = "cantidad",target = "quantity")
+                @Mapping(source = "cantidad",target = "quantity"),
+
+
 
         })
         DishOrder toDishOrder(PedidoPlato pedidoPlato);
-        List<DishOrder> toDishesOrders(Iterable<PedidoPlato> pedidoPlatos);
+        List<DishOrder> toDishesOrders(List<PedidoPlato> pedidoPlatos);
         @InheritInverseConfiguration
         @Mappings({
-                @Mapping(target = "plato",ignore = true),
+                @Mapping(target = "pedido",ignore = true),
+                @Mapping(target = "plato", ignore = true),
+
         })
         PedidoPlato toPedidoPlato(DishOrder dishOrder);
 

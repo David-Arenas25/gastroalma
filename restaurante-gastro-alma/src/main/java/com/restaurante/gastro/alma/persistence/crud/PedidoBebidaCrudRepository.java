@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface PedidoBebidaCrudRepository extends CrudRepository<PedidoBebida,Integer> {
 
-    @Procedure(name = "pedir_bebida")
-    PedidoBebida pedirBebida(@Param("idBebida") int idBebida, @Param("idPedido") int idPedido);
+    @Procedure("pedir_bebida")
+    void pedirBebida(@Param("id_bebida") int idBebida, @Param("id_pedido")  int idPedido, @Param("comentario") String comentario, @Param("cantidad") int cantidad);
 
 
 
